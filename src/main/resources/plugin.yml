@@ -1,0 +1,27 @@
+name: GamerthuzRTP
+version: 1.1.0
+main: com.gamerthuz.rtp.RtpPlugin
+api-version: '26.2'
+author: Gamerthuz
+website: https://github.com/Gamerthuz/GamerthuzRTP
+description: Advanced random teleport with a multi-world GUI, safe landing, cooldown and cost by Gamerthuz
+softdepend: [Vault]
+commands:
+  rtp:
+    description: Random teleport
+    usage: /rtp [world] [range] | /rtp back | /rtp force <player> [world] [range]
+    aliases: [wild, randomtp]
+    permission: gamerthuz.rtp.use
+permissions:
+  gamerthuz.rtp.use:
+    default: true
+  gamerthuz.rtp.back:
+    default: true
+  gamerthuz.rtp.bypass.cooldown:
+    default: op
+  gamerthuz.rtp.bypass.warmup:
+    default: op
+  gamerthuz.rtp.bypass.cost:
+    default: op
+  gamerthuz.rtp.admin:
+    default: op

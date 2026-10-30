@@ -1,0 +1,169 @@
+# ============================================================
+#  GamerthuzRTP - developed by Gamerthuz
+#  Text uses MiniMessage: https://docs.advntr.dev/minimessage/format.html
+# ============================================================
+settings:
+  cooldown: 60               # seconds between RTPs (0 = none)
+  warmup: 3                  # seconds to stand still (0 = instant)
+  cancel-on-move: true
+  cancel-on-damage: true
+  max-attempts: 25           # tries to find a safe spot
+  quick-tier: normal         # tier used by the "Quick RTP" button
+  blocked-biomes:            # never land in these biomes
+    - ocean
+    - deep_ocean
+    - cold_ocean
+    - deep_cold_ocean
+    - frozen_ocean
+    - deep_frozen_ocean
+    - lukewarm_ocean
+    - deep_lukewarm_ocean
+    - warm_ocean
+    - river
+    - frozen_river
+  first-join:
+    enabled: false           # RTP new players automatically
+    world: Survival
+    tier: near
+
+# ---------- World groups (Multiverse) ----------
+# Features work only INSIDE one enabled group, never between two groups.
+# Worlds that are not listed here are disabled. World names must match Multiverse exactly.
+world-groups:
+  survival:
+    display: "Survival"
+    enabled: true
+    worlds: [Survival, Survival_nether, Survival_the_end]
+  lifesteal:
+    display: "Lifesteal"
+    enabled: false
+    worlds: [lifesteal, lifesteal_nether, lifesteal_the_end]
+  pvp:
+    display: "PvP"
+    enabled: false
+    worlds: [pvp]
+
+# ---------- Worlds shown in the GUI ----------
+# The key MUST match the real Multiverse world name.
+# Players only see the worlds of their OWN group.
+# center: border | spawn | zero
+worlds:
+  Survival:
+    display-name: "<green><bold>Overworld"
+    icon: GRASS_BLOCK
+    description:
+      - "<gray>Forests, mountains, villages"
+      - "<gray>and endless adventure."
+    enabled: true
+    center: border
+    cost-multiplier: 1.0
+    permission: ""
+  Survival_nether:
+    display-name: "<red><bold>Nether"
+    icon: NETHERRACK
+    description:
+      - "<gray>Fortresses, bastions"
+      - "<gray>and a lot of lava."
+    enabled: true
+    center: border
+    cost-multiplier: 1.5
+    permission: ""
+  Survival_the_end:
+    display-name: "<light_purple><bold>The End"
+    icon: END_STONE
+    description:
+      - "<gray>Outer islands and"
+      - "<gray>end cities."
+    enabled: true
+    center: border
+    cost-multiplier: 2.0
+    permission: ""
+  lifesteal:
+    display-name: "<green><bold>Lifesteal Overworld"
+    icon: GRASS_BLOCK
+    description:
+      - "<gray>Fight for hearts."
+    enabled: true
+    center: border
+    cost-multiplier: 1.0
+    permission: ""
+  lifesteal_nether:
+    display-name: "<red><bold>Lifesteal Nether"
+    icon: NETHERRACK
+    description:
+      - "<gray>Dangerous and hot."
+    enabled: true
+    center: border
+    cost-multiplier: 1.5
+    permission: ""
+  lifesteal_the_end:
+    display-name: "<light_purple><bold>Lifesteal End"
+    icon: END_STONE
+    description:
+      - "<gray>The outer islands."
+    enabled: true
+    center: border
+    cost-multiplier: 2.0
+    permission: ""
+
+# ---------- Distance tiers ----------
+# Final cost = tier cost x world cost-multiplier. Needs Vault + economy plugin.
+ranges:
+  near:
+    name: "<green><bold>Near"
+    icon: LEATHER_BOOTS
+    min: 100
+    max: 1000
+    cost: 0
+    lore:
+      - "<gray>A quick hop close to home."
+  normal:
+    name: "<yellow><bold>Normal"
+    icon: IRON_BOOTS
+    min: 1000
+    max: 4000
+    cost: 100
+    lore:
+      - "<gray>A good balance of"
+      - "<gray>distance and safety."
+  far:
+    name: "<gold><bold>Far"
+    icon: GOLDEN_BOOTS
+    min: 4000
+    max: 10000
+    cost: 250
+    lore:
+      - "<gray>Fresh, untouched land."
+  extreme:
+    name: "<red><bold>Extreme"
+    icon: DIAMOND_BOOTS
+    min: 10000
+    max: 25000
+    cost: 500
+    lore:
+      - "<gray>The edge of the map."
+      - "<gray>Bring supplies!"
+
+messages:
+  player-only: "<red>Only players can use this."
+  no-permission: "<red>You don't have permission."
+  busy: "<red>You already have a teleport in progress."
+  world-unavailable: "<red>That world is not available."
+  world-disabled: "<red>RTP is disabled in this world."
+  cross-world-blocked: "<red>You can only RTP inside your own world group."
+  unknown-world: "<red>Unknown world. Use /rtp to see the list."
+  unknown-tier: "<red>Unknown range. Try: <white><tiers>"
+  player-not-found: "<red>Player not found."
+  cooldown: "<red>Wait <white><seconds>s <red>before using RTP again."
+  not-enough-money: "<red>You need <white><cost> <red>for this teleport."
+  cost-charged: "<gray>Charged <white><cost><gray>."
+  searching: "<yellow>Searching for a safe location..."
+  search-failed: "<red>Couldn't find a safe spot. Try again, nothing was charged."
+  warmup-start: "<yellow>Teleporting in <white><seconds>s<yellow>. Don't move!"
+  warmup-cancelled: "<red>Teleport cancelled."
+  teleported: "<green>Teleported to <white>X: <x> Y: <y> Z: <z> <gray>(<world>)"
+  back-none: "<red>You have no previous location."
+  back-done: "<green>Returned to your previous location."
+  forced: "<green>Sent <white><player> <green>on a random teleport."
+  usage-force: "<gray>Usage: <white>/rtp force <player> [world] [range]"
+  reloaded: "<green>Config reloaded."
